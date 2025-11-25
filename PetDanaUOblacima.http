@@ -1,0 +1,6 @@
+@PetDanaUOblacima_HostAddress = http://localhost:5104
+
+GET {{PetDanaUOblacima_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
