@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetDanaUOblacima")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9dc24dfc08ceafaf05e197f587b67b8f40e17d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e6cc1c7988081eda827d7f5a27889368aac8023")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetDanaUOblacima")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetDanaUOblacima")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
