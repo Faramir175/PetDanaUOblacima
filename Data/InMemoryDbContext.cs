@@ -59,9 +59,9 @@ namespace PetDanaUOblacima.Data
         }
 
         // Unutar statičke klase InMemoryDbContext
-        public static Canteen UpdateCanteen(int id, Canteen updatedCanteen)
+        public static Canteen UpdateCanteen(Canteen updatedCanteen)
         {
-            var existingCanteen = _canteens.FirstOrDefault(c => c.Id == id);
+            var existingCanteen = _canteens.FirstOrDefault(c => c.Id == updatedCanteen.Id);
             if (existingCanteen == null)
             {
                 return null;
@@ -69,7 +69,7 @@ namespace PetDanaUOblacima.Data
 
             if (!string.IsNullOrEmpty(updatedCanteen.Name))
             {
-                if (_canteens.Any(c => c.Name.Equals(updatedCanteen.Name, StringComparison.OrdinalIgnoreCase) && c.Id != id))
+                if (_canteens.Any(c => c.Name.Equals(updatedCanteen.Name, StringComparison.OrdinalIgnoreCase) && c.Id != updatedCanteen.Id)))
                 {
                     throw new InvalidOperationException("Menza sa tim imenom već postoji.");
                 }

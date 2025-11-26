@@ -1,9 +1,16 @@
+using PetDanaUOblacima.Data;
+using PetDanaUOblacima.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ICanteenService, CanteenService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
@@ -19,5 +26,20 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapPost("/setup/reset", (HttpContext context) =>
+{
+    try
+    {
+        InMemoryDbContext.ResetDatabase();
+        context.Response.StatusCode = 200;
+        return Results.Ok(new { message = "Database successfully reset." });
+    }
+    catch (Exception ex)
+    {
+        context.Response.StatusCode = 500;
+        return Results.Problem(ex.Message);
+    }
+});
 
 app.Run();
