@@ -2,7 +2,7 @@
 {
     public class CanteenStatusResponseItemDTO
     {
-        public string CanteenId { get; set; }
+        public int CanteenId { get; set; }
         public List<CanteenStatusSlotDTO> Slots { get; set; }
     }
 }

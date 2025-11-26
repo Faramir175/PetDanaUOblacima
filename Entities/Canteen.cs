@@ -1,4 +1,7 @@
-﻿namespace PetDanaUOblacima.Entities
+﻿using PetDanaUOblacima.Utils;
+using System.Text.Json.Serialization;
+
+namespace PetDanaUOblacima.Entities
 {
     public class Canteen
     {
@@ -13,7 +16,9 @@
     public class MealTime
     {
         public string Meal { get; set; } 
-        public string From { get; set; } 
-        public string To { get; set; } 
+        [JsonConverter(typeof(TimeOnlyJsonConverter))]
+        public TimeOnly From { get; set; }
+        [JsonConverter(typeof(TimeOnlyJsonConverter))]
+        public TimeOnly To { get; set; } 
     }
 }

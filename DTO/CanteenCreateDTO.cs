@@ -7,6 +7,6 @@ namespace PetDanaUOblacima.DTO
         public string Name { get; set; }
         public string Location { get; set; }
         public int Capacity { get; set; }
-        public List<MealTime> WorkingHours { get; set; }
+        public List<MealTime>? WorkingHours { get; set; }
     }
 }

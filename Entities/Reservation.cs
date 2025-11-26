@@ -1,4 +1,7 @@
-﻿namespace PetDanaUOblacima.Entities
+﻿using PetDanaUOblacima.Utils;
+using System.Text.Json.Serialization;
+
+namespace PetDanaUOblacima.Entities
 {
     public class Reservation
     {
@@ -8,6 +11,7 @@
 
         public DateOnly Date { get; set; }
 
+        [JsonConverter(typeof(TimeOnlyJsonConverter))]
         public TimeOnly Time { get; set; }
 
         public int Duration { get; set; }

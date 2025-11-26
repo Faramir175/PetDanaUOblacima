@@ -58,7 +58,6 @@ namespace PetDanaUOblacima.Data
             return _canteens.FirstOrDefault(c => c.Id == id);
         }
 
-        // Unutar statičke klase InMemoryDbContext
         public static Canteen UpdateCanteen(Canteen updatedCanteen)
         {
             var existingCanteen = _canteens.FirstOrDefault(c => c.Id == updatedCanteen.Id);
@@ -67,29 +66,10 @@ namespace PetDanaUOblacima.Data
                 return null;
             }
 
-            if (!string.IsNullOrEmpty(updatedCanteen.Name))
-            {
-                if (_canteens.Any(c => c.Name.Equals(updatedCanteen.Name, StringComparison.OrdinalIgnoreCase) && c.Id != updatedCanteen.Id)))
-                {
-                    throw new InvalidOperationException("Menza sa tim imenom već postoji.");
-                }
-                existingCanteen.Name = updatedCanteen.Name;
-            }
-
-            if (!string.IsNullOrEmpty(updatedCanteen.Location))
-            {
-                existingCanteen.Location = updatedCanteen.Location;
-            }
-
-            if (updatedCanteen.Capacity > 0)
-            {
-                existingCanteen.Capacity = updatedCanteen.Capacity;
-            }
-
-            if (updatedCanteen.WorkingHours != null && updatedCanteen.WorkingHours.Any())
-            {
-                existingCanteen.WorkingHours = updatedCanteen.WorkingHours;
-            }
+            existingCanteen.Name = updatedCanteen.Name;
+            existingCanteen.Location = updatedCanteen.Location;
+            existingCanteen.Capacity = updatedCanteen.Capacity;
+            existingCanteen.WorkingHours = updatedCanteen.WorkingHours;
 
             return existingCanteen;
         }

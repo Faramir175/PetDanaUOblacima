@@ -108,8 +108,8 @@ namespace PetDanaUOblacima.Services
             var slotEnd = slotTime.AddMinutes(duration);
 
             var mealTime = canteen.WorkingHours.FirstOrDefault(wh =>
-                TimeOnly.Parse(wh.From) <= slotTime &&
-                TimeOnly.Parse(wh.To) >= slotEnd
+                wh.From <= slotTime &&
+                wh.To >= slotEnd
             );
 
             if (mealTime == null)
@@ -150,7 +150,7 @@ namespace PetDanaUOblacima.Services
 
             var result = new CanteenStatusResponseItemDTO
             {
-                CanteenId = canteenId.ToString(),
+                CanteenId = canteenId,
                 Slots = new List<CanteenStatusSlotDTO>()
             };
 
@@ -162,11 +162,16 @@ namespace PetDanaUOblacima.Services
 
                 foreach (var slotTime in intervals)
                 {
+                    if (duration == 60 && slotTime.Minute == 30)
+                    {
+                        continue;
+                    }
+
                     var slotEnd = slotTime.AddMinutes(duration);
 
                     var mealTime = canteen.WorkingHours.FirstOrDefault(wh =>
-                        TimeOnly.Parse(wh.From) <= slotTime &&
-                        TimeOnly.Parse(wh.To) >= slotEnd
+                        wh.From <= slotTime &&
+                        wh.To >= slotEnd
                     );
 
                     if (mealTime != null)
